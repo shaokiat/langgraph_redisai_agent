@@ -1,12 +1,19 @@
-# RedisAI + LangGraph Agent Demo
+# RedisAI + LangGraph Agent RAG Demo
 
-A simple demonstration project showing how to integrate RedisAI with LangGraph agents for AI-powered applications.
+This project demonstrates how to build a Retrieval-Augmented Generation (RAG) agent using:
+
+- 🧠 LangGraph for structured LLM reasoning and tool use
+
+- 🗃️ Redis Vector Database for semantic search over documentation
+
+- 📄 Redis OSS and RedisAI GitHub documentation as the knowledge base
+
+The result is a powerful and interactive chatbot agent that can answer technical questions based on Redis docs.
 
 ## Features
 
-- **RedisAI Integration**: Uses RedisAI for model serving and inference
+- **Redis Vector Database**: Uses Redis VectorDB for storing of Redis documentation
 - **LangGraph Agent**: Implements a simple conversational agent using LangGraph
-- **Model Management**: Demonstrates loading and serving models through RedisAI
 - **Conversation Flow**: Shows how to build conversational workflows
 
 ## Setup
@@ -42,15 +49,22 @@ A simple demonstration project showing how to integrate RedisAI with LangGraph a
    # Edit .env and add your OpenAI API key
    ```
 
-4. **Test the Setup**:
+4. **Initialize the VectorDB with Redis Documentation**:
+   Official Redis Inference Optimization GitHub Repository:
+   https://github.com/RedisAI/redis-inference-optimization
 
    ```bash
-   python test_setup.py
+   # In root directory
+   git clone https://github.com/RedisAI/redis-inference-optimization.git
+
+   # Change directory to src/ folder
+   python ingest_redis_doc.py
    ```
 
 5. **Run the Demo**:
 
    ```bash
+   # Change directory to src/ folder
    # Interactive chat mode
    python main.py
 
@@ -71,8 +85,8 @@ A simple demonstration project showing how to integrate RedisAI with LangGraph a
 
 The demo creates a simple conversational agent that:
 
-1. Uses RedisAI to serve a sentiment analysis model
+1. Uses Redis Vector Database to store Redis Github documentations and retrieve relevant results
 2. Processes user input through a LangGraph workflow
-3. Provides responses based on sentiment analysis and conversation context
+3. Provides responses based relevant vector results and conversation context
 
 Run the demo and start chatting with the agent!
