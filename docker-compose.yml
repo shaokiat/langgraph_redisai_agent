@@ -1,15 +1,13 @@
 version: '3.8'
 
 services:
-  redis-ai:
-    image: redislabs/redisai:latest
-    container_name: redis-ai-demo
+  redis-stack:
+    image: redis/redis-stack-server:latest
+    container_name: redis-stack-server
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data
-    command: redis-server --appendonly yes
     restart: unless-stopped
-
 volumes:
   redis_data: 

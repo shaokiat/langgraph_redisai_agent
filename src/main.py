@@ -78,9 +78,11 @@ def main():
             # Update session ID for conversation continuity
             session_id = result["session_id"]
             
+            # Display RAG context used
+            print(f"📚 RAG Context: {result['rag_context']}")
+            
             # Display response
             print(f"🤖 Assistant: {result['response']}")
-            print(f"📊 Sentiment: {result['sentiment']}")
             
         except KeyboardInterrupt:
             print("\n👋 Goodbye!")
@@ -108,8 +110,8 @@ def demo_workflow():
     
     # Demo messages
     demo_messages = [
-        "I'm feeling great today!",
-        "This is terrible, I hate everything",
+        "How does AI.MODELRUN differ from AI.DAGRUN?",
+        "What's the simplest way to run a model using RedisAI",
         "Can you help me with a technical question?",
         "I love this demo, it's amazing!"
     ]
@@ -124,7 +126,6 @@ def demo_workflow():
         session_id = result["session_id"]
         
         print(f"🤖 Assistant: {result['response']}")
-        print(f"📊 Sentiment: {result['sentiment']}")
     
     print("\n✅ Demo workflow completed!")
 

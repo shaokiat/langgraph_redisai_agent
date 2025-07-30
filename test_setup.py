@@ -46,7 +46,7 @@ def test_redis_connection():
     print("\n🔍 Testing Redis connection...")
     
     try:
-        from redis_ai_client import RedisAIClient
+        from src.redis_ai_client import RedisAIClient
         redis_client = RedisAIClient()
         redis_client.redis_client.ping()
         print("✅ Redis connection successful")
@@ -67,8 +67,8 @@ def test_agent_creation():
         return False
     
     try:
-        from redis_ai_client import RedisAIClient
-        from agent import RedisAILangGraphAgent
+        from src.redis_ai_client import RedisAIClient
+        from src.agent import RedisAILangGraphAgent
         
         redis_client = RedisAIClient()
         agent = RedisAILangGraphAgent(redis_client, openai_api_key)
@@ -78,30 +78,6 @@ def test_agent_creation():
         print(f"❌ Agent creation failed: {e}")
         return False
 
-def test_sentiment_analysis():
-    """Test sentiment analysis"""
-    print("\n🔍 Testing sentiment analysis...")
-    
-    try:
-        from redis_ai_client import RedisAIClient
-        
-        redis_client = RedisAIClient()
-        
-        test_messages = [
-            "I love this!",
-            "This is terrible",
-            "Hello world"
-        ]
-        
-        for message in test_messages:
-            sentiment = redis_client.simple_sentiment_analysis(message)
-            print(f"  '{message}' -> {sentiment}")
-        
-        print("✅ Sentiment analysis working")
-        return True
-    except Exception as e:
-        print(f"❌ Sentiment analysis failed: {e}")
-        return False
 
 def main():
     """Run all tests"""
@@ -111,8 +87,7 @@ def main():
     tests = [
         test_imports,
         test_redis_connection,
-        test_agent_creation,
-        test_sentiment_analysis
+        test_agent_creation
     ]
     
     passed = 0
